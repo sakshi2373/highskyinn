@@ -9,19 +9,79 @@
 <body>
 
 <section>
-<h2>Login</h2>
+<h2>Login with OTP</h2>
 
-<form id="loginForm">
-<input type="email" id="loginEmail" placeholder="Email" required>
-<input type="password" id="loginPassword" placeholder="Password" required>
+<input type="text" id="phone" placeholder="+91XXXXXXXXXX" required>
 
-<button type="submit">Login</button>
-</form>
+<div id="recaptcha"></div>
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<br><br>
+
+<input type="text" id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify OTP</button>
 
 <p>New user? <a href="signup.html">Signup</a></p>
-
 </section>
 
-<script src="script.js"></script>
+
+<!-- Firebase -->
+ <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDmVNKJcqjWpEcYBjv5jKtUr_nNjMfa0JU",
+  authDomain: "highskyinn-afb92.firebaseapp.com",
+  projectId: "highskyinn-afb92",
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// reCAPTCHA
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha', {
+  'size': 'normal'
+});
+
+
+// SEND OTP
+function sendOTP(){
+  let phone = document.getElementById("phone").value;
+
+  firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
+  .then(function (confirmationResult) {
+    window.confirmationResult = confirmationResult;
+    alert("OTP Sent Successfully");
+  }).catch(function (error) {
+    alert(error.message);
+  });
+}
+
+
+// VERIFY OTP + SAVE NAME
+function verifyOTP(){
+  let otp = document.getElementById("otp").value;
+
+  window.confirmationResult.confirm(otp).then(function (result) {
+
+    // 🔥 USER NAME INPUT
+    let userName = prompt("Enter your name");
+
+    if(userName){
+      localStorage.setItem("name", userName);
+    }else{
+      localStorage.setItem("name", "User");
+    }
+
+    alert("Login Successful");
+    window.location.href = "dashboard.html";
+
+  }).catch(function (error) {
+    alert("Wrong OTP");
+  });
+}
+</script>
+
 </body>
 </html>

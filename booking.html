@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Bookings</title>
+<title>My Booking</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section>
-<h2>My Bookings</h2>
+<h2>Booking Confirmation ✅</h2>
 
 <div id="bookingData"></div>
 
 <br>
-<a href="dashboard.html">Back Dashboard</a>
+<a href="index.html">Back to Home</a>
 </section>
 
-<script src="script.js"></script>
+<script>
+let bookingData = document.getElementById("bookingData");
+
+if(bookingData){
+
+let data = JSON.parse(localStorage.getItem("bookings"));
+
+if(data && data.length > 0){
+
+let html = "<h3>All Bookings</h3>";
+
+data.forEach(b => {
+html += `
+<p>
+<b>Name:</b> ${b.name} <br>
+<b>Room:</b> ${b.room} <br>
+<b>Check-in:</b> ${b.checkin} <br>
+<b>Check-out:</b> ${b.checkout}
+</p>
+<hr>
+`;
+});
+
+bookingData.innerHTML = html;
+
+}else{
+bookingData.innerHTML = "No Bookings Found";
+}
+
+}
+</script>
+
 </body>
 </html>

@@ -16,32 +16,80 @@
 <a href="#rooms">Rooms</a>
 <a href="#booking">Booking</a>
 <a href="#contact">Contact</a>
+<!-- ✅ ADD THIS -->
+<a href="login.html">Login</a>
+<a href="signup.html">Signup</a>
 </nav>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero">
-<h1>Luxury Stay in Greater Noida</h1>
-<p>Affordable Rooms With Best Comfort</p>
-<a href="#booking">Book Now</a>
-</section>
 
-<section id="rooms">
-<h2>Our Rooms</h2>
+<div class="hero-content">
+<h1>Find Your Perfect Stay</h1>
+<p>Luxury Rooms in Greater Noida</p>
 
-<div class="room-box">
-<div class="room">Room 1 - ₹1500</div>
-<div class="room">Room 2 - ₹1800</div>
-<div class="room">Room 3 - ₹2200</div>
-<div class="room">Room 4 - ₹2500</div>
-<div class="room">Room 5 - ₹3000</div>
+<div class="search-box">
+<input type="date">
+<input type="date">
+
+<select>
+<option>1 Guest</option>
+<option>2 Guests</option>
+<option>3 Guests</option>
+</select>
+
+<button>Search</button>
+</div>
+
 </div>
 </section>
 
+<!-- ROOMS SECTION -->
+<section id="rooms">
+<h2>Our Rooms</h2>
+
+<div class="room-slider">
+
+<div class="room-card">
+<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room1.jpg.jpg" alt="Room 1">
+<h3>Room 1</h3>
+<p>₹1500 / Night</p>
+</div>
+
+<div class="room-card">
+<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room2.jpg.jpg" alt="Room 2">
+<h3>Room 2</h3>
+<p>₹1800 / Night</p>
+</div>
+
+<div class="room-card">
+<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room3.jpg.jpg" alt="Room 3">
+<h3>Room 3</h3>
+<p>₹2200 / Night</p>
+</div>
+
+<div class="room-card">
+<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room4.jpg.jpg" alt="Room 4">
+<h3>Room 4</h3>
+<p>₹2500 / Night</p>
+</div>
+
+<div class="room-card">
+<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room1.jpg.jpg" alt="Room 5">
+<h3>Room 5</h3>
+<p>₹3000 / Night</p>
+</div>
+
+</div>
+</section>
+
+<!-- BOOKING -->
 <section id="booking">
 <h2>Book Room</h2>
 
 <form id="bookForm">
- <input type="text" id="guestName" placeholder="Your Name" required>
+<input type="text" id="guestName" placeholder="Your Name" required>
 <input type="date" id="checkin" required>
 <input type="date" id="checkout" required>
 
@@ -55,13 +103,15 @@
 </select>
 
 <button type="submit">Confirm Booking</button>
+<button type="button" onclick="payNow()">Pay Now</button>
 </form>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
 <p>📍 Kaveri City Center, Delta, Greater Noida</p>
-<p>📞 999999999</p>
+<p>📞 7834948008</p>
 <p>📧 highskyinn@gmail.com</p>
 </section>
 
@@ -69,6 +119,27 @@
 © 2026 High Sky Inn
 </footer>
 
+<!-- ✅ RAZORPAY SCRIPT -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- ✅ FIREBASE SCRIPTS -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<!-- ✅ FIREBASE CONFIG -->
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDmVNKJcqjWpEcYBjv5jKtUr_nNjMfa0JU",
+  authDomain: "highskyinn-afb92.firebaseapp.com",
+  projectId: "highskyinn-afb92",
+  appId: "1:965877232209:web:2ca82738d78e129f17be70"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
+
+<!-- ✅ YOUR JS FILE -->
 <script src="script.js"></script>
+
 </body>
 </html>
