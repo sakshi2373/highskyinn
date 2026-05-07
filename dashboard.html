@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard - High Sky Inn</title>
+
+<title>Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-<section style="text-align:center; padding:50px;">
+<section>
 
-<h2>Welcome <span id="username"></span> 👋</h2>
+<h2>
+Welcome
+<span id="username"></span>
+👋
+</h2>
 
 <br>
 
-<a href="index.html">🏠 Home</a><br><br>
-<a href="bookings.html">📖 My Bookings</a><br><br>
+<a href="index.html">Home</a>
 
-<button onclick="logout()">🚪 Logout</button>
+<br><br>
+
+<a href="bookings.html">
+My Bookings
+</a>
+
+<br><br>
+
+<button onclick="logout()">
+Logout
+</button>
 
 </section>
 
+
 <script>
 
-// SHOW USER NAME
-let username = document.getElementById("username");
+let username =
+document.getElementById("username");
 
-let name = localStorage.getItem("name");
+let name =
+localStorage.getItem("name");
 
 if(name){
+
 username.innerText = name;
+
 }else{
+
 username.innerText = "User";
+
 }
 
 
-// LOGOUT FUNCTION
 function logout(){
+
 localStorage.clear();
+
 window.location.href = "login.html";
+
 }
 
 </script>

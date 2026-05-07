@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - High Sky Inn</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section>
+
 <h2>Login with OTP</h2>
 
-<input type="text" id="phone" placeholder="+91XXXXXXXXXX" required>
+<input type="text" id="phone" placeholder="+919999999999">
 
 <div id="recaptcha"></div>
 
@@ -23,64 +25,118 @@
 
 <button onclick="verifyOTP()">Verify OTP</button>
 
-<p>New user? <a href="signup.html">Signup</a></p>
 </section>
 
 
-<!-- Firebase -->
- <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<!-- FIREBASE COMPAT -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+
 <script>
+
+// FIREBASE CONFIG
 const firebaseConfig = {
-  apiKey: "AIzaSyDmVNKJcqjWpEcYBjv5jKtUr_nNjMfa0JU",
-  authDomain: "highskyinn-afb92.firebaseapp.com",
-  projectId: "highskyinn-afb92",
+  apiKey: "AIzaSyCRLP44vjbyxkF68zutPVP6aapu2qktQRM",
+  authDomain: "highskyinn-11f73.firebaseapp.com",
+  projectId: "highskyinn-11f73",
+  storageBucket: "highskyinn-11f73.firebasestorage.app",
+  messagingSenderId: "712373389301",
+  appId: "1:712373389301:web:20b3efd6f057153bb8c2bc",
+  measurementId: "G-NXKCDNM05K"
 };
 
+// INITIALIZE
 firebase.initializeApp(firebaseConfig);
 
-// reCAPTCHA
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha', {
-  'size': 'normal'
+
+// RECAPTCHA
+window.onload = function () {
+
+window.recaptchaVerifier =
+new firebase.auth.RecaptchaVerifier('recaptcha', {
+size: 'normal'
 });
+
+recaptchaVerifier.render();
+
+};
 
 
 // SEND OTP
 function sendOTP(){
-  let phone = document.getElementById("phone").value;
 
-  firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
-  .then(function (confirmationResult) {
-    window.confirmationResult = confirmationResult;
-    alert("OTP Sent Successfully");
-  }).catch(function (error) {
-    alert(error.message);
-  });
+let phone =
+document.getElementById("phone").value;
+
+firebase.auth()
+.signInWithPhoneNumber(
+phone,
+window.recaptchaVerifier
+)
+
+.then(function(result){
+
+window.confirmationResult = result;
+
+alert("OTP Sent");
+
+})
+
+.catch(function(error){
+
+console.log(error);
+
+alert(error.message);
+
+});
+
 }
 
 
-// VERIFY OTP + SAVE NAME
+// VERIFY OTP
 function verifyOTP(){
-  let otp = document.getElementById("otp").value;
 
-  window.confirmationResult.confirm(otp).then(function (result) {
+let otp =
+document.getElementById("otp").value;
 
-    // 🔥 USER NAME INPUT
-    let userName = prompt("Enter your name");
 
-    if(userName){
-      localStorage.setItem("name", userName);
-    }else{
-      localStorage.setItem("name", "User");
-    }
+if(!window.confirmationResult){
 
-    alert("Login Successful");
-    window.location.href = "dashboard.html";
+alert("Please Send OTP First");
 
-  }).catch(function (error) {
-    alert("Wrong OTP");
-  });
+return;
+
 }
+
+
+window.confirmationResult.confirm(otp)
+
+.then(function(result){
+
+let name = prompt("Enter Your Name");
+
+localStorage.setItem(
+"name",
+name || "User"
+);
+
+alert("Login Successful");
+
+window.location.href =
+"dashboard.html";
+
+})
+
+.catch(function(error){
+
+alert("Wrong OTP");
+
+});
+
+}
+
 </script>
 
 </body>
