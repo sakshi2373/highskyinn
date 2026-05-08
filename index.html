@@ -3,144 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>High Sky Inn</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
 <header>
-<div class="logo">
-High Sky Inn
-</div>
+
+<h2>High Sky Inn</h2>
 
 <nav>
+
 <a href="#">Home</a>
+
 <a href="#rooms">Rooms</a>
+
 <a href="#booking">Booking</a>
+
 <a href="#contact">Contact</a>
-<!-- ✅ ADD THIS -->
+
 <a href="login.html">Login</a>
+
 <a href="signup.html">Signup</a>
+
 </nav>
+
 </header>
 
+
 <!-- HERO SECTION -->
+
 <section class="hero">
 
 <div class="hero-content">
+
 <h1>Find Your Perfect Stay</h1>
+
 <p>Luxury Rooms in Greater Noida</p>
 
+
 <div class="search-box">
+
 <input type="date">
+
 <input type="date">
 
 <select>
+
 <option>1 Guest</option>
+
 <option>2 Guests</option>
+
 <option>3 Guests</option>
+
 </select>
 
-<button>Search</button>
+<button>
+Search
+</button>
+
 </div>
 
 </div>
+
 </section>
 
+
+
 <!-- ROOMS SECTION -->
+
 <section id="rooms">
+
 <h2>Our Rooms</h2>
 
 <div class="room-slider">
 
+
 <div class="room-card">
-<img src="imagesall\room1.jpg" alt="Room 1">
+
+<img src="imagesall/room1.jpg" alt="Room 1">
+
 <h3>Room 1</h3>
+
 <p>₹1500 / Night</p>
+
 </div>
 
+
 <div class="room-card">
-<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room2.jpg.jpg" alt="Room 2">
+
+<img src="imagesall/room2.jpg" alt="Room 2">
+
 <h3>Room 2</h3>
+
 <p>₹1800 / Night</p>
+
 </div>
 
+
 <div class="room-card">
-<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room3.jpg.jpg" alt="Room 3">
+
+<img src="imagesall/room3.jpg" alt="Room 3">
+
 <h3>Room 3</h3>
+
 <p>₹2200 / Night</p>
+
 </div>
 
+
 <div class="room-card">
-<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room4.jpg.jpg" alt="Room 4">
+
+<img src="imagesall/room4.jpg" alt="Room 4">
+
 <h3>Room 4</h3>
+
 <p>₹2500 / Night</p>
+
 </div>
+
 
 <div class="room-card">
-<img src="C:\Users\HP\Pictures\modernwebsite\imagesall\room1.jpg.jpg" alt="Room 5">
+
+<img src="imagesall/room5.jpg" alt="Room 5">
+
 <h3>Room 5</h3>
+
 <p>₹3000 / Night</p>
+
 </div>
 
 </div>
+
 </section>
 
-<!-- BOOKING -->
+
+
+<!-- BOOKING SECTION -->
+
 <section id="booking">
+
 <h2>Book Room</h2>
 
 <form id="bookForm">
-<input type="text" id="guestName" placeholder="Your Name" required>
-<input type="date" id="checkin" required>
-<input type="date" id="checkout" required>
+
+<input
+type="text"
+id="guestName"
+placeholder="Your Name"
+required
+>
+
+<input
+type="date"
+id="checkin"
+required
+>
+
+<input
+type="date"
+id="checkout"
+required
+>
 
 <select id="room" required>
-<option>Select Room</option>
-<option>Room 1</option>
-<option>Room 2</option>
-<option>Room 3</option>
-<option>Room 4</option>
-<option>Room 5</option>
+
+<option value="">
+Select Room
+</option>
+
+<option>
+Room 1
+</option>
+
+<option>
+Room 2
+</option>
+
+<option>
+Room 3
+</option>
+
+<option>
+Room 4
+</option>
+
+<option>
+Room 5
+</option>
+
 </select>
 
-<button type="submit">Confirm Booking</button>
-<button type="button" onclick="payNow()">Pay Now</button>
+
+<button
+type="button"
+class="btn"
+onclick="payNow()"
+>
+Pay Now
+</button>
+
 </form>
+
 </section>
+
+
 
 <!-- CONTACT -->
+
 <section id="contact">
+
 <h2>Contact</h2>
-<p>📍 Kaveri City Center, Delta, Greater Noida</p>
-<p>📞 7834948008</p>
-<p>📧 highskyinn@gmail.com</p>
+
+<p>
+📍 Kaveri City Center, Delta, Greater Noida
+</p>
+
+<p>
+📞 7834948008
+</p>
+
+<p>
+📧 highskyinn@gmail.com
+</p>
+
 </section>
 
+
+
 <footer>
+
 © 2026 High Sky Inn
+
 </footer>
 
-<!-- ✅ RAZORPAY SCRIPT -->
+
+
+<!-- RAZORPAY SCRIPT -->
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<!-- ✅ FIREBASE SCRIPTS -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
-<!-- ✅ FIREBASE CONFIG -->
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDmVNKJcqjWpEcYBjv5jKtUr_nNjMfa0JU",
-  authDomain: "highskyinn-afb92.firebaseapp.com",
-  projectId: "highskyinn-afb92",
-  appId: "1:965877232209:web:2ca82738d78e129f17be70"
-};
+<!-- YOUR JS FILE -->
 
-firebase.initializeApp(firebaseConfig);
-</script>
-
-<!-- ✅ YOUR JS FILE -->
 <script src="script.js"></script>
 
 </body>
