@@ -421,9 +421,12 @@ return;
 let amount = 1500;
 
 if(room == "Room 2") amount = 1800;
-if(room == "Room 3") amount = 2200;
-if(room == "Room 4") amount = 2500;
-if(room == "Room 5") amount = 3000;
+if(room == "Room 3") amount = 2000;
+if(room == "Room 4") amount = 2000;
+if(room == "Room 5") amount = 2500;
+if(room == "Room 6") amount = 2500;
+if(room == "Room 7") amount = 3000;
+if(room == "Room 8") amount = 3000;
 
 
 // RAZORPAY
@@ -491,3 +494,5 @@ var rzp1 = new Razorpay(options);
 rzp1.open();
 
 }
+
+
