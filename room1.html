@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,21 +23,52 @@ content="width=device-width, initial-scale=1.0">
 </header>
 
 
+
+<!-- ROOM DETAILS -->
+
 <section class="room-details">
 
 <h1>Luxury Room 1</h1>
 
+
+
+<!-- GALLERY -->
+
 <div class="gallery">
 
-<img src="imagesall/room1.jpg">
+<div class="big-image">
 
-<img src="imagesall/bathroom1.jpg">
-
-<img src="imagesall/balcony1.jpg">
-
-<img src="imagesall/room1side.jpg">
+<img
+src="imagesall/WhatsApp Image 2026-05-11 at 4.47.33 PM (2).jpeg"
+onclick="openImage(this.src)">
 
 </div>
+
+
+
+<div class="small-images">
+
+<img
+src="imagesall/WhatsApp Image 2026-05-11 at 4.47.32 PM.jpeg"
+onclick="openImage(this.src)">
+
+<img
+src="imagesall/WhatsApp Image 2026-05-05 at 4.10.01 PM.jpeg"
+onclick="openImage(this.src)">
+
+<img
+src="imagesall/bathroom1.jpeg"
+onclick="openImage(this.src)">
+
+<img
+src="imagesall/WhatsApp Image 2026-05-11 at 4.47.33 PM (2).jpeg"
+onclick="openImage(this.src)">
+
+</div>
+
+</div>
+
+
 
 <!-- ROOM DESCRIPTION -->
 
@@ -58,7 +89,7 @@ attached bathroom and modern interior.
 
 <!-- AMENITIES -->
 
-<div class="amenities">
+<div class="amenities" data-aos="zoom-in">
 
 <h2>Amenities</h2>
 
@@ -98,6 +129,32 @@ attached bathroom and modern interior.
 
 </div>
 
+</div>
+
+
+
+<!-- NEARBY PLACES -->
+
+<div class="nearby">
+
+<h2>Nearby Places</h2>
+
+<div class="nearby-box">
+
+<p>📍 2 min from Metro</p>
+
+<p>🛍 5 min from Mall</p>
+
+<p>🚕 Easy Cab Access</p>
+
+<p>🍴 Restaurants Nearby</p>
+
+</div>
+
+</div>
+
+
+
 <!-- THINGS TO KNOW -->
 
 <section class="things">
@@ -105,7 +162,8 @@ attached bathroom and modern interior.
 <h2>Things To Know</h2>
 
 
-<!-- CANCELLATION POLICY -->
+
+<!-- CANCELLATION -->
 
 <div class="thing-box">
 
@@ -152,9 +210,42 @@ After that, the reservation is non-refundable.
 
 </section>
 
+
+<section>
+<div class="check-cards">
+
+<div class="check-card">
+
+<h3>Check-in</h3>
+
+<p>After 2:00 PM</p>
+
+</div>
+
+
+
+<div class="check-card">
+
+<h3>Checkout</h3>
+
+<p>Before 11:00 AM</p>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PRICE -->
+
 <h3 class="price">
+    
 ₹1500 / Night
 </h3>
+
+
+
+<!-- BOOK BUTTON -->
 
 <a href="index.html#booking"
 class="hero-btn">
@@ -164,6 +255,26 @@ Book Now
 </a>
 
 </section>
+
+
+
+<!-- IMAGE POPUP -->
+
+<div id="popup">
+
+<span onclick="closeImage()">
+✖
+</span>
+
+<img id="popup-img">
+
+</div>
+
+
+
+<!-- JS FILE -->
+
+<script src="script.js"></script>
 
 </body>
 </html>

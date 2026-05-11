@@ -1,4 +1,4 @@
-// ==========================
+ // ==========================
 // SIGNUP
 // ==========================
 
@@ -25,6 +25,7 @@ document.getElementById("password").value;
 
 
 // SAVE USER DATA
+
 localStorage.setItem("name", name);
 
 localStorage.setItem("email", email);
@@ -34,13 +35,13 @@ localStorage.setItem("password", password);
 
 alert("Signup Successful");
 
-
 window.location.href =
 "login.html";
 
 });
 
 }
+
 
 
 
@@ -68,6 +69,7 @@ document.getElementById("loginPassword").value;
 
 
 // GET SAVED DATA
+
 let savedEmail =
 localStorage.getItem("email");
 
@@ -76,9 +78,10 @@ localStorage.getItem("password");
 
 
 // CHECK LOGIN
+
 if(
-email == savedEmail &&
-password == savedPassword
+email === savedEmail &&
+password === savedPassword
 ){
 
 localStorage.setItem(
@@ -103,6 +106,7 @@ alert("Wrong Email or Password");
 
 
 
+
 // ==========================
 // SHOW USER NAME
 // ==========================
@@ -116,18 +120,11 @@ if(username){
 let name =
 localStorage.getItem("name");
 
-
-if(name){
-
-username.innerText = name;
-
-}else{
-
-username.innerText = "User";
+username.innerText =
+name || "User";
 
 }
 
-}
 
 
 
@@ -146,8 +143,9 @@ window.location.href =
 
 
 
+
 // ==========================
-// BOOKING SYSTEM
+// BOOKING DATA
 // ==========================
 
 let bookingData =
@@ -168,7 +166,7 @@ bookingData.innerHTML =
 "<h3>✅ Your Bookings</h3>";
 
 
-data.forEach((b, index)=>{
+data.forEach((b,index)=>{
 
 bookingData.innerHTML += `
 
@@ -201,6 +199,7 @@ bookingData.innerHTML =
 
 
 
+
 // ==========================
 // DELETE BOOKING
 // ==========================
@@ -213,7 +212,7 @@ localStorage.getItem("bookings")
 ) || [];
 
 
-bookings.splice(index, 1);
+bookings.splice(index,1);
 
 
 localStorage.setItem(
@@ -221,10 +220,10 @@ localStorage.setItem(
 JSON.stringify(bookings)
 );
 
-
 location.reload();
 
 }
+
 
 
 
@@ -245,9 +244,8 @@ function(e){
 e.preventDefault();
 
 if(
-adminUser.value == "admin"
-&&
-adminPass.value == "1234"
+adminUser.value === "admin" &&
+adminPass.value === "1234"
 ){
 
 localStorage.setItem(
@@ -268,7 +266,18 @@ alert("Wrong Admin Login");
 
 }
 
+// ==========================
+// loader
+// ==========================
 
+window.addEventListener(
+"load",
+function(){
+
+document.getElementById("loader")
+.style.display = "none";
+
+});
 
 // ==========================
 // ADMIN BOOKINGS
@@ -325,6 +334,7 @@ allBookings.innerHTML =
 
 
 
+
 // ==========================
 // ADMIN LOGOUT
 // ==========================
@@ -339,6 +349,7 @@ window.location.href =
 "admin-login.html";
 
 }
+
 
 
 
@@ -369,7 +380,9 @@ if(slider){
 i++;
 
 if(i >= images.length){
+
 i = 0;
+
 }
 
 slider.src = images[i];
@@ -379,6 +392,30 @@ slider.src = images[i];
 },3000);
 
 
+
+
+// ==========================
+// IMAGE POPUP
+// ==========================
+
+function openImage(src){
+
+document.getElementById("popup")
+.style.display = "flex";
+
+document.getElementById("popup-img")
+.src = src;
+
+}
+
+
+
+function closeImage(){
+
+document.getElementById("popup")
+.style.display = "none";
+
+}
 
 
 
@@ -403,11 +440,12 @@ document.getElementById("room").value;
 
 
 // VALIDATION
+
 if(
-guestName == "" ||
-checkin == "" ||
-checkout == "" ||
-room == ""
+guestName === "" ||
+checkin === "" ||
+checkout === "" ||
+room === ""
 ){
 
 alert("Please Fill All Fields");
@@ -417,19 +455,21 @@ return;
 }
 
 
-// PRICE
+// ROOM PRICE
+
 let amount = 1500;
 
-if(room == "Room 2") amount = 1800;
-if(room == "Room 3") amount = 2000;
-if(room == "Room 4") amount = 2000;
-if(room == "Room 5") amount = 2500;
-if(room == "Room 6") amount = 2500;
-if(room == "Room 7") amount = 3000;
-if(room == "Room 8") amount = 3000;
+if(room === "Room 2") amount = 1800;
+if(room === "Room 3") amount = 2000;
+if(room === "Room 4") amount = 2000;
+if(room === "Room 5") amount = 2500;
+if(room === "Room 6") amount = 2500;
+if(room === "Room 7") amount = 3000;
+if(room === "Room 8") amount = 3000;
 
 
 // RAZORPAY
+
 var options = {
 
 "key": "rzp_test_Sl9smYpKtYyMe4",
@@ -443,14 +483,13 @@ var options = {
 "description": "Room Booking Payment",
 
 
-"handler": function (response){
+"handler": function (){
 
-alert(
-"Payment Successful ✅"
-);
+alert("Payment Successful ✅");
 
 
 // SAVE BOOKING
+
 let booking = {
 
 name: guestName,
@@ -483,16 +522,17 @@ window.location.href =
 
 
 "theme": {
+
 "color": "#0d1b2a"
+
 }
 
 };
 
 
-var rzp1 = new Razorpay(options);
+var rzp1 =
+new Razorpay(options);
 
 rzp1.open();
 
 }
-
-
